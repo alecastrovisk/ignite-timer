@@ -1,3 +1,5 @@
+import { ActionTypes } from './actions'
+
 export interface Cycle {
   id: string
   task: string
@@ -10,12 +12,6 @@ export interface Cycle {
 interface CycleState {
   cycles: Cycle[]
   activeCycleId: string | null
-}
-
-export enum ActionTypes {
-  ADD_NEW_CYCLE = 'ADD_NEW_CYCLE',
-  INTERRUPT_CURRENT_CYCLE = 'INTERRUPT_CURRENT_CYCLE',
-  MARK_CURRENT_AS_FINISHED = 'MARK_CURRENT_AS_FINISHED',
 }
 
 export function CyclesReducer(state: CycleState, action: any) {
@@ -38,7 +34,7 @@ export function CyclesReducer(state: CycleState, action: any) {
         }),
         activeCycleId: null,
       }
-    case ActionTypes.MARK_CURRENT_AS_FINISHED:
+    case ActionTypes.MARK_CURRENT_CYCLE_AS_FINISHED:
       return {
         ...state,
         cycles: state.cycles.map((cycle) => {
